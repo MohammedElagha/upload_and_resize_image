@@ -19,36 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $file_type = $_FILES['user_image']['type'][$i];
             $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 
-            if (($file_ext == 'jpg' || $file_ext == 'png') && $file_size < 500000) {
-                $file_new_name = generate_file_name(30) . '.' . $file_ext;
-                $upload_path = 'uploads/' . $file_new_name;
-                move_uploaded_file($file_tmp, $upload_path);
-                // compress($_FILES['user_image'], $upload_path);
+            $file_new_name = generate_file_name(30) . '.' . $file_ext;
+            $upload_path = 'uploads/' . $file_new_name;
+            move_uploaded_file($file_tmp, $upload_path);
 
-                if (file_exists($upload_path)) {
-                    echo '<div class="col-12">
-                        <div class="alert alert-success">Uploaded</div>
-                    </div>';    
-                } else {
-                    echo '<div class="col-12">
-                        <div class="alert alert-danger">Failed</div>
-                    </div>';    
-                }
+            if (file_exists($upload_path)) {
+                echo '<div class="col-12">
+                    <div class="alert alert-success">Uploaded</div>
+                </div>';    
             } else {
-                $file_new_name = generate_file_name(30) . '.' . $file_ext;
-                $upload_path = 'uploads/' . $file_new_name;
-                move_uploaded_file($file_tmp, $upload_path);
-
-                if (file_exists($upload_path)) {
-                    echo '<div class="col-12">
-                        <div class="alert alert-success">Uploaded</div>
-                    </div>';    
-                } else {
-                    echo '<div class="col-12">
-                        <div class="alert alert-danger">Failed</div>
-                    </div>';    
-                }   
-            }
+                echo '<div class="col-12">
+                    <div class="alert alert-danger">Failed</div>
+                </div>';    
+            }   
         }
 	}
 }
