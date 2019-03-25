@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       	$file_size = $_FILES['user_image']['size'];
       	$file_tmp = $_FILES['user_image']['tmp_name'];
       	$file_type = $_FILES['user_image']['type'];
+        $error = $_FILES['image']['error'];
       	$file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 
       	if (($file_ext == 'jpg' || $file_ext == 'png') && $file_size < 500000) {
