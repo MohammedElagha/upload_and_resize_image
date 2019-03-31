@@ -11,7 +11,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	if (isset($_FILES['user_image'])) {
-        // var_dump($_FILES['user_image']); die();
 		for($i=0 ; $i < count($_FILES['user_image']['name']) ; $i++) {
             $file_name = $_FILES['user_image']['name'][$i];
             $file_size = $_FILES['user_image']['size'][$i];
